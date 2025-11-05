@@ -1,0 +1,134 @@
+{
+  "createdAt": "2025-10-27T10:28:11.460Z",
+  "updatedAt": "2025-10-27T10:50:47.000Z",
+  "id": "dYpmQlHVvbGWYJxb",
+  "name": "My workflow",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "531d0bdf-bc2b-453f-9fee-1efd83c10507",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.URL }}/exercises",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "exercisedb.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "={{ $json.API }}"
+            },
+            {
+              "name": "Limit ",
+              "value": "={{ $json['Limt '] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        512,
+        0
+      ],
+      "id": "2f4ca793-7a53-4928-9fdc-f0724a15cb8f",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "370922fc-8812-4827-9e69-643a2ed21ca8",
+              "name": "URL",
+              "value": "https://exercisedb.p.rapidapi.com",
+              "type": "string"
+            },
+            {
+              "id": "f1bc0a1d-ba65-408d-bc6e-1beef74073bd",
+              "name": "API",
+              "value": "4b204ed048mshce36d7737a02bb6p15cbdfjsnf3d83aebe1fd",
+              "type": "string"
+            },
+            {
+              "id": "1a66548a-2c3f-4674-a094-181adc594cb8",
+              "name": "Limt ",
+              "value": "2",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "e1550def-da4d-4f9e-b4b8-dda67aa156da",
+      "name": "Variables"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variables": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "97d9fa5f-3245-414b-81be-e3881a83ee4a",
+  "triggerCount": 0,
+  "shared": [
+    {
+      "createdAt": "2025-10-27T10:28:11.464Z",
+      "updatedAt": "2025-10-27T10:28:11.464Z",
+      "role": "workflow:owner",
+      "workflowId": "dYpmQlHVvbGWYJxb",
+      "projectId": "PmLBfGR96TQxq1fx"
+    }
+  ],
+  "tags": []
+}
