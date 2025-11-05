@@ -1,0 +1,135 @@
+{
+  "createdAt": "2025-10-28T08:45:14.719Z",
+  "updatedAt": "2025-10-28T16:41:07.000Z",
+  "id": "mvEMYFvjleu9PZMB",
+  "name": "Bot telegram para errores",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "de8054da-ef5d-4bfb-b13e-1ea148601aec",
+      "name": "Telegram Trigger",
+      "webhookId": "89859185-10e4-4f50-a243-8d1b802c4ba9",
+      "credentials": {
+        "telegramApi": {
+          "id": "dN9dcgRbmdGjPx0u",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "=Eco:{{ $json.message.text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "67306cbb-fcce-43a1-8e1d-ac666236f4d1",
+      "name": "Send a text message",
+      "webhookId": "3139cdc6-d6cc-42c2-b238-7d033bacd758",
+      "credentials": {
+        "telegramApi": {
+          "id": "dN9dcgRbmdGjPx0u",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "81f1e785-d789-4a4c-8231-fe49a429298e",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "01c501ef-e098-4227-aaf6-9a111be8e249",
+      "name": "If"
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "ce585087-2e7f-4476-b220-60403b981f4e",
+  "triggerCount": 0,
+  "shared": [
+    {
+      "createdAt": "2025-10-28T08:45:14.722Z",
+      "updatedAt": "2025-10-28T08:45:14.722Z",
+      "role": "workflow:owner",
+      "workflowId": "mvEMYFvjleu9PZMB",
+      "projectId": "PmLBfGR96TQxq1fx"
+    }
+  ],
+  "tags": []
+}
