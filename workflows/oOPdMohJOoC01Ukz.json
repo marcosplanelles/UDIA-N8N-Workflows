@@ -1,0 +1,42 @@
+{
+  "createdAt": "2025-10-29T09:35:42.440Z",
+  "updatedAt": "2025-10-29T10:08:54.000Z",
+  "id": "oOPdMohJOoC01Ukz",
+  "name": "Bot errores telegram 1",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "60cb3dd9-f3aa-4a8f-9766-5fc489266b15",
+      "name": "Error Trigger"
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "1cb037a1-f35e-4bd1-a8b8-04da45e388c2",
+  "triggerCount": 0,
+  "shared": [
+    {
+      "createdAt": "2025-10-29T09:35:42.442Z",
+      "updatedAt": "2025-10-29T09:35:42.442Z",
+      "role": "workflow:owner",
+      "workflowId": "oOPdMohJOoC01Ukz",
+      "projectId": "PmLBfGR96TQxq1fx"
+    }
+  ],
+  "tags": []
+}
