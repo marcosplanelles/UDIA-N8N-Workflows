@@ -1,0 +1,149 @@
+{
+  "createdAt": "2025-10-27T08:08:14.956Z",
+  "updatedAt": "2025-10-27T10:17:26.000Z",
+  "id": "Dac9PEhPT1KG5JnR",
+  "name": "UDIA workflow prueba",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "UDIA prueba ",
+        "formDescription": "Las ultimas noticias de n8n en tu email",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nombre ",
+              "placeholder": "Aqui tu nombre ",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "email",
+              "fieldType": "email",
+              "placeholder": "JuanFornes@gmail.com",
+              "requiredField": true
+            },
+            {
+              "fieldType": "html",
+              "html": " <form action=\"/enviar\" method=\"post\">\n  <div class=\"campo-privacidad\">\n    <input type=\"checkbox\" id=\"acepto-privacidad\" name=\"acepto-privacidad\" required>\n    <label for=\"acepto-privacidad\">\n      Acepto la \n      <a href=\"/politica-de-privacidad\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Política de Privacidad\n      </a>.\n    </label>\n  </div>\n\n \n"
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6ec15b08-af72-4f50-abce-823f65ffe1cb",
+      "name": "On form submission",
+      "webhookId": "e2379318-25de-472e-abee-515a25071c6e"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/17naQA2OG9teidifvuSv7wdoFdlXAX3JCMelKB4WZWgo/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17naQA2OG9teidifvuSv7wdoFdlXAX3JCMelKB4WZWgo/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "email": "={{ $json.email }}",
+            "nombre ": "={{ $json['Nombre '] }}"
+          },
+          "matchingColumns": [
+            "email"
+          ],
+          "schema": [
+            {
+              "id": "nombre ",
+              "displayName": "nombre ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "a0637e11-1ea5-4ca6-8576-2be50cddb304",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "uUNdce7zkautiU7j",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "3d171c70-bbe5-4c30-bfd4-a0782bfd3d04",
+  "triggerCount": 0,
+  "shared": [
+    {
+      "createdAt": "2025-10-27T08:08:14.962Z",
+      "updatedAt": "2025-10-27T08:08:14.962Z",
+      "role": "workflow:owner",
+      "workflowId": "Dac9PEhPT1KG5JnR",
+      "projectId": "PmLBfGR96TQxq1fx"
+    }
+  ],
+  "tags": []
+}
