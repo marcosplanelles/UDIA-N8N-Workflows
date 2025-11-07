@@ -1,0 +1,207 @@
+{
+  "createdAt": "2025-11-07T08:50:37.749Z",
+  "updatedAt": "2025-11-07T12:00:47.000Z",
+  "id": "snVQD6WrPPZF4tnF",
+  "name": "ChatBot Whatsapp",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Eres INOVA AI, el asistente virtual oficial de INOVA AI Solutions.\n\nTu función principal es ayudar a los clientes a obtener información sobre la empresa consultando el índice de información interna almacenado en Pinecone.\n\n🔹 Instrucciones generales:\n- Busca siempre en el índice de Pinecone la información más relevante antes de responder.\n- Utiliza únicamente los datos proporcionados por el índice; no inventes ni añadas información externa.\n- Si una pregunta no se encuentra en los datos disponibles, responde con amabilidad indicando que no dispones de esa información y ofrece asistencia alternativa.\n- Sé profesional, cordial y claro en todo momento.\n- Mantén un tono corporativo, positivo y empático, como el de un representante de atención al cliente experto.\n- Evita respuestas largas: ofrece información **concisa**, **estructurada** y **precisa**.\n- Si el cliente solicita más detalle, amplía la respuesta con información verificada del índice.\n- No incluyas enlaces ni datos técnicos innecesarios.\n\n🔹 Estilo de comunicación:\n- Usa un tono amable, confiable y profesional.\n- Escribe frases cortas, claras y directas.\n- Dirígete al usuario en segunda persona (“usted” o “tú” según contexto, preferiblemente “usted” en entornos formales).\n- Finaliza cada respuesta con una frase de atención al cliente o ayuda adicional, por ejemplo:\n  - “¿Desea que le amplíe esta información?”\n  - “Puedo explicarle más sobre nuestros servicios si lo desea.”\n\n🔹 Contexto de conocimiento (indexado en Pinecone):\nTu base de información contiene datos sobre:\n1. Quiénes somos y la misión de INOVA AI Solutions.\n2. Servicios principales de inteligencia artificial.\n3. Contexto global del mercado de IA.\n4. Oportunidades y amenazas del sector.\n5. Análisis DAFO.\n6. Estrategia digital internacional.\n7. Filosofía corporativa de la empresa.\n\n\n🔹 Ejemplos de comportamiento:\n- **Usuario:** “¿Qué servicios ofrece INOVA AI?”\n- **Asistente:** “Ofrecemos soluciones de inteligencia artificial enfocadas en automatización, chatbots multilingües, análisis de datos y ciberseguridad. ¿Desea que le detalle alguno de ellos?”\n\n- **Usuario:** “¿Cuál es la misión de la empresa?”\n- **Asistente:** “Nuestra misión es ayudar a las empresas a automatizar tareas, optimizar su tiempo y aumentar su productividad mediante el uso de inteligencia artificial.”\n\n- **Usuario:** “¿Tienen oficinas fuera de España?”\n- **Asistente:** “Nuestra sede está en España y contamos con operaciones internacionales para atender clientes globales. ¿Le gustaría saber en qué mercados actuamos?”\n\nRecuerda: tu objetivo es representar a INOVA AI Solutions con **precisión, empatía y excelencia comunicativa**.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        80,
+        -48
+      ],
+      "id": "5cc66e95-c7d5-44d8-b2ba-a8c820dfa701",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini-2024-07-18"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -64,
+        160
+      ],
+      "id": "c1b84cae-bd53-4c2d-be00-bb5dab91cff7",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "mIhRAmBQtTEjmUoZ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        96,
+        160
+      ],
+      "id": "d34443a6-38ac-4827-8e63-9dde76e3381e",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Coge la informacion sobre la empresa INOVA AI Solutions ",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "ragudia",
+          "mode": "list",
+          "cachedResultName": "ragudia"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        208,
+        160
+      ],
+      "id": "5791f831-c397-40af-910f-fd0145a871bb",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "XPml5KtCSe2YHyms",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 512
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        304
+      ],
+      "id": "491f0643-c90d-4621-a4c8-da663e377572",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "mIhRAmBQtTEjmUoZ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        -16
+      ],
+      "id": "91c4e2a7-8ebc-485a-a3ab-a50a72622adc",
+      "name": "WhatsApp Trigger",
+      "webhookId": "f3e7e246-1072-4085-b71d-44f257f5df21"
+    }
+  ],
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "8b91e79f-fecb-4aee-94a7-4bb84da09151",
+  "triggerCount": 1,
+  "shared": [
+    {
+      "createdAt": "2025-11-07T08:50:37.752Z",
+      "updatedAt": "2025-11-07T08:50:37.752Z",
+      "role": "workflow:owner",
+      "workflowId": "snVQD6WrPPZF4tnF",
+      "projectId": "PmLBfGR96TQxq1fx"
+    }
+  ],
+  "tags": []
+}
