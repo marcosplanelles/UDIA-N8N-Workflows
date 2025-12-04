@@ -1,0 +1,83 @@
+{
+  "updatedAt": "2025-11-27T10:25:30.000Z",
+  "createdAt": "2025-11-12T09:27:34.538Z",
+  "id": "O65chAOxoSDb3v4w",
+  "name": "My workflow 6",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "path": "4a32f87b-3505-424e-998c-8cba366751cc",
+        "responseMode": "responseNode",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "body",
+                "value": "=$query[\"hub.challenge\"]"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -288,
+        144
+      ],
+      "id": "518862f1-5ecd-4714-9e70-5edca2caf9b6",
+      "name": "Webhook",
+      "webhookId": "4a32f87b-3505-424e-998c-8cba366751cc"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.query['hub.challenge'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -64,
+        144
+      ],
+      "id": "614917be-737a-4da2-bccd-6c12ef262076",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "e6dfdfc0-876e-4ba9-8d2b-b27659ed0608",
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2025-11-12T09:27:34.545Z",
+      "createdAt": "2025-11-12T09:27:34.545Z",
+      "role": "workflow:owner",
+      "workflowId": "O65chAOxoSDb3v4w",
+      "projectId": "PmLBfGR96TQxq1fx"
+    }
+  ],
+  "tags": []
+}
