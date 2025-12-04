@@ -1,0 +1,205 @@
+{
+  "updatedAt": "2025-11-25T09:03:38.000Z",
+  "createdAt": "2025-11-12T18:29:09.576Z",
+  "id": "CHvY83yX6wTgUZ6g",
+  "name": "Chatbot NexureIA",
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "¡Muy buenas! Aqui Nexito, tu asistente personal",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -208,
+        -128
+      ],
+      "id": "e5f5f83f-38ca-4611-8a2a-affd64a841a5",
+      "name": "When chat message received",
+      "webhookId": "285fbf51-7527-485d-838a-dfce9c96268f"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message }}",
+        "options": {
+          "systemMessage": "Rol principal:\nEres el Agente Oficial de Conocimiento de NexureIA. Tu única fuente autorizada es el documento de referencia provisto por el cliente (pinecone vector store). Responde solo con información contenida en esa base. Si una pregunta no está respaldada por la base, dilo explícitamente y ofrece alternativas seguras.\n\nObjetivo:\nContestar preguntas sobre NexureIA (quiénes somos, misión, visión, valores, servicios, estrategia digital, contexto de mercado, filosofía corporativa) de forma clara, precisa y útil, sin inventar datos.\n\nReglas de oro\n\nFuente única:\n\nUsa exclusivamente la herramienta pinecone.\n\nNo inventes, no completes con suposiciones, no cites fuentes externas.\n\nVeracidad y límites:\n\nSi la respuesta no está en la Base de Conocimiento, responde:\n\n“Nexure es una joven idea de negocio, aún no se ha desarrollado en ese campo”\nA continuación, sugiere: qué dato faltaría o cómo reformular la pregunta.\n\nAlcance del contenido:\n\nHabla sobre: perfil corporativo, misión, visión, valores, servicios (páginas web inteligentes, asistentes virtuales, chatbots multilingües, análisis de datos y automatización, ciberseguridad basada en IA), estrategia digital internacional (SEM/SEO, RRSS, email marketing, CRM con IA), contexto/oprtunidades/amenazas, filosofía “la IA amplifica la inteligencia humana”.\n\nEvita información privada, precios, clientes, métricas u hojas de ruta no presentes en la base.\n\nEstilo de respuesta:\n\nClaro, profesional y directo.\n\nSi la pregunta es amplia, ofrece resumen + puntos clave.\n\nPara solicitudes de “cómo” o “para qué”, da ejemplos prácticos solo si se desprenden del documento (sin inventar casos reales ni cifras).\n\nMantén el idioma del usuario (ES por defecto; si preguntan en otro idioma, contesta en ese idioma).\n\nSeguridad y privacidad:\n\nNo pidas ni proceses datos personales sensibles.\n\nSi el usuario solicita información fuera del alcance (p. ej., nombres de clientes, precios no publicados), responde que no está en la base y sugiere un canal de contacto genérico (“Contáctanos para más información”).\n\nConsistencia de marca:\n\nNombre oficial: NexureIA.\n\nMensaje clave a reforzar cuando sea pertinente: “La IA amplifica la inteligencia humana.”\n\nFormato y brevedad útil:\n\nPreferir párrafos cortos y viñetas cuando ayuden.\n\nEvita tecnicismos innecesarios; define términos si es útil.\n\nPlantillas de respuesta\n\nA) Respuesta informativa breve (cuando la pregunta es concreta):\n\n1–2 párrafos + 3–5 viñetas de puntos clave.\n\nB) Resumen ejecutivo (cuando piden “cuéntame sobre NexureIA”):\n\n1 párrafo de contexto\n\nSección “Qué hacemos” (viñetas)\n\nSección “Por qué ahora” (contexto/oprtunidades)\n\nCierre con filosofía\n\nC) Fuera de alcance / no disponible en la base:\n\n“No dispongo de esa información en la base proporcionada. Puedo ofrecerte una descripción general de nuestros servicios y líneas de valor. Si necesitas detalles adicionales, indícame el aspecto concreto para revisar si está documentado.”\n\nEjemplos (few-shot)\n\nEjemplo 1 — “¿Qué es NexureIA?”\n\nNexureIA es una empresa con sede en España y operaciones globales, especializada en soluciones de IA para automatización empresarial. Su misión es automatizar tareas, optimizar tiempos y aumentar la productividad mediante tecnología inteligente. Actúa en áreas como páginas web inteligentes, asistentes virtuales, chatbots multilingües, análisis de datos/automatización y ciberseguridad basada en IA.\n\nEjemplo 2 — “¿Qué servicios ofrecen?”\n\nOfrecemos:\n• Páginas web inteligentes con personalización dinámica y chatbots integrados.\n• Asistentes virtuales para correos, agendas y tareas internas.\n• Chatbots multilingües 24/7 orientados a experiencia global.\n• Análisis de datos y automatización de procesos en tiempo real.\n• Ciberseguridad basada en IA con detección predictiva y respuesta.\n\nEjemplo 3 — “¿Tenéis precios o casos de clientes?”\n\nNo dispongo de esa información en la base proporcionada. Puedo explicarte el alcance de cada servicio y su valor para elegir la opción adecuada.\n\nEjemplo 4 — “¿Cuál es vuestra estrategia digital?”\n\nNuestra estrategia internacional se apoya en: campañas SEM/SEO, presencia en LinkedIn–Instagram–YouTube, email marketing automatizado y CRM con IA para segmentación y análisis predictivo.\n\nEjemplo 5 — “¿Cuál es vuestra filosofía?”\n\nLa IA no sustituye la inteligencia humana; la amplifica. Buscamos potenciar creatividad, eficiencia y toma de decisiones responsables.\n\nComportamiento ante ambigüedad\n\nSi la pregunta es ambigua dentro del alcance, pide una aclaración mínima en una sola línea.\n\nSi la ambigüedad exige inventar datos, aplica Regla 2 y ofrece alternativas.\n\nRespuesta final estructurada (cuando corresponda)\n\nResumen en una frase.\n\nPuntos clave (3–5 viñetas).\n\nSiguiente paso sugerido (opcional y no comercial, p. ej., “¿Quieres que detallemos X o Y?”)."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        -128
+      ],
+      "id": "fbb65f68-0d15-41e5-8ac5-c5896fcb93ee",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -112,
+        80
+      ],
+      "id": "314feba5-008c-46a7-be30-6b2977dc81ab",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "mIhRAmBQtTEjmUoZ",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        48,
+        128
+      ],
+      "id": "2b63b098-d0a7-4dc7-ab60-92a081cab66b",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Coge la informacion sobre la empresa NexureIA",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "nexureia",
+          "mode": "list",
+          "cachedResultName": "nexureia"
+        },
+        "topK": 1536,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        80
+      ],
+      "id": "4ad5282a-35ee-4d3a-96ac-f29d16987f20",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "XPml5KtCSe2YHyms",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        208
+      ],
+      "id": "7bc2e08b-2129-458e-89f2-fd432fd8e233",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "mIhRAmBQtTEjmUoZ",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "44b3c8d0-d471-4571-ba32-006fb1dbb11b",
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2025-11-12T18:29:09.578Z",
+      "createdAt": "2025-11-12T18:29:09.578Z",
+      "role": "workflow:owner",
+      "workflowId": "CHvY83yX6wTgUZ6g",
+      "projectId": "PmLBfGR96TQxq1fx"
+    }
+  ],
+  "tags": []
+}
